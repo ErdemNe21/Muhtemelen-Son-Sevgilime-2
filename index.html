@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sana Bir Mesajım Var... ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffe6e6; /* Romantik pembe arka plan */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Romantik Kart Alanı */
+        #proposal-area {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 90%;
+            border: 2px solid #ffb3b3;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #4a4a4a;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .romantic-note {
+            font-style: italic;
+            color: #777777;
+            font-size: 14px;
+            margin-top: 25px;
+            border-top: 1px dashed #ffb3b3;
+            padding-top: 15px;
+            line-height: 1.4;
+        }
+
+        .heart-icon {
+            font-size: 50px;
+            color: #ff4d6d;
+            animation: pulse 1s infinite alternate;
+            margin-bottom: 15px;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+
+        /* Butonların yan yana düzgün durması için düzelttim */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 10px;
+            min-height: 50px;
+            position: relative;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        #yes-btn {
+            background-color: #ff4d6d;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        #yes-btn:hover {
+            transform: scale(1.05);
+        }
+
+        #no-btn {
+            background-color: #cccccc;
+            color: #555555;
+            transition: all 0.15s ease;
+            white-space: nowrap;
+        }
+
+        /* Gizli Jump Scare Alanı */
+        #jumpscare-container {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            z-index: 9999;
+        }
+
+        #scary-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: shake 0.1s infinite; 
+        }
+
+        @keyframes shake {
+            0% { transform: translate(2px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(0px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(2px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(2px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Romantik Teklif Kartı -->
+    <div id="proposal-area">
+        <div class="heart-icon">❤️</div>
+        <h1>Seni Çok Seviyorum Aşkım!</h1>
+        <p>Benimle sevgili olur musun? 🥰</p>
+        
+        <div class="btn-container">
+            <!-- EVET'e basınca anında jumpscare tetiklenir -->
+            <button id="yes-btn" onclick="triggerJumpscare()">EVET! 💍</button>
+            <!-- HAYIR butonu artık düzgün duruyor, dokununca kaçıyor -->
+            <button id="no-btn" onmouseover="escapeButton()" onclick="escapeButton()" ontouchstart="escapeButton()">HAYIR 💔</button>
+        </div>
+
+        <!-- Etkileyici / Duygusal Not Bölümü -->
+        <div class="romantic-note">
+            "Sen benim gökyüzündeki en parlak yıldızım, hayatımdaki en güzel şiirsin. <br>
+            Seninle başlayan her günüm bir ömre bedel... İyi ki varsın sevgilim." ✨
+        </div>
+    </div>
+
+    <!-- Arkadan fırlayacak gizli ekran (Senin yüklediğin PNG) -->
+    <div id="jumpscare-container">
+        <img id="scary-img" src="https://cdn.discordapp.com/attachments/1513237178707087432/1513277471481532426/e1b.png?ex=6a2724f8&is=6a25d378&hm=46cff11187c8b0e425248033e0815f3e2399c3062e1c61050faf850e3dd67a35&" alt="BOO!">
+    </div>
+
+    <!-- YENİ KABUS ÇIĞLIĞI SES EFEKTİ -->
+    <audio id="scream-sound" src="https://cdn.discordapp.com/attachments/1513237178707087432/1513280297112830154/Nightmare_scream_jumpscare_SFX.mp3?ex=6a27279a&is=6a25d61a&hm=d4705d62521556d3ef3ee0e4eed35568d3eda22abeaf2f378f23c0ec79575e21&" preload="auto"></audio>
+
+    <script>
+        // HAYIR butonunu kaçıran fonksiyon
+        function escapeButton() {
+            var noBtn = document.getElementById('no-btn');
+            
+            // Ekran sınırlarına göre rastgele konum belirle
+            var randomX = Math.floor(Math.random() * (window.innerWidth - 120));
+            var randomY = Math.floor(Math.random() * (window.innerHeight - 50));
+            
+            // Butonun konumunu fixed yapıp ekranda uçuruyoruz
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // EVET butonuna basınca jumpscare patlatır
+        function triggerJumpscare() {
+            document.getElementById('jumpscare-container').style.display = 'block';
+            
+            var audio = document.getElementById('scream-sound');
+            audio.volume = 1.0; 
+            audio.play().catch(function(error) {
+                console.log("Ses çalma hatası:", error);
+            });
+        }
+    </script>
+
+</body>
+</html>
